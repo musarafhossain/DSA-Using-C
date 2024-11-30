@@ -115,7 +115,7 @@ void DeleteAtLast(){
     free(curr_node);
 }
 
-struct node * Search(int value){
+struct node * GetNode(int value){
     struct node *curr_node;
     curr_node = head;
     while(curr_node!=NULL){
@@ -124,6 +124,23 @@ struct node * Search(int value){
         curr_node = curr_node->next;
     }
     return NULL;
+}
+
+void Search(int value){
+    struct node *curr_node = head;
+    int i=1, isFound=0;
+    while (curr_node!=NULL){
+        if(curr_node->data==value)
+            isFound = 1;
+            break;
+        curr_node = curr_node->next;
+        i++;
+    }
+    if(isFound){
+        printf("\n%d found at position %d.", value, i);
+    }else{
+        printf("\nNot found.");
+    }
 }
 
 void Display(){
@@ -142,12 +159,22 @@ void Display(){
     
 }
 
+void ListSize(){
+    struct node *curr_node = head;
+    int i = 0;
+    while (curr_node!=NULL){
+        i++;
+        curr_node=curr_node->next;
+    }
+    printf("\nList size = %d", i);
+}
+
 void main(){
     int ch, data, pos;
     while(1){
         printf("-----------Menu----------");
         printf("\n=========================");
-        printf("\n0. Exit\n1. Insert at first\n2. Insert at last\n3. Insert after\n4. Update\n5. Delete at first\n6. Delete\n7. Delete at last\n8. Display");
+        printf("\n0. Exit\n1. Insert at first\n2. Insert at last\n3. Insert after\n4. Update\n5. Delete at first\n6. Delete\n7. Delete at last\n8. Search\n9. Display\n10. List Size");
         printf("\nEnter your choice :- ");
         scanf("%d", &ch);
         switch (ch){
@@ -166,13 +193,13 @@ void main(){
                 data = InputData();
                 printf("\nEnter the value after add :- ");
                 scanf("%d", &pos);
-                InsertAfter(Search(pos), data);
+                InsertAfter(GetNode(pos), data);
                 break;
             case 4:
                 data = InputData();
                 printf("\nEnter the value which will update :- ");
                 scanf("%d", &pos);
-                Update(Search(pos), data);
+                Update(GetNode(pos), data);
                 break;
             case 5:
                 DeleteAtBeginning();
@@ -186,7 +213,15 @@ void main(){
                 DeleteAtLast();
                 break;
             case 8:
+                printf("\nEnter the value which will search :- ");
+                scanf("%d", &pos);
+                Search(pos);
+                break;
+            case 9:
                 Display();
+                break;
+            case 10:
+                ListSize();
                 break;
             default:
                 printf("\nInvalid Input.");

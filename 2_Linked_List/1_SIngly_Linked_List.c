@@ -130,16 +130,18 @@ void Search(int value){
     struct node *curr_node = head;
     int i=1, isFound=0;
     while (curr_node!=NULL){
-        if(curr_node->data==value)
+        printf("%d  ", curr_node->data);
+        if(curr_node->data==value){
             isFound = 1;
             break;
+        }
         curr_node = curr_node->next;
         i++;
     }
     if(isFound){
         printf("\n%d found at position %d.", value, i);
     }else{
-        printf("\nNot found.");
+        printf("\nNot found %d.", value);
     }
 }
 

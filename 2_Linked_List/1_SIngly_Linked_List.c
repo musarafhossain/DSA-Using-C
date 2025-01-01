@@ -101,6 +101,10 @@ void Delete(int value) {
 }
 
 void DeleteAtLast(){
+    if(IsEmpty()){
+        printf("\nList is empty");
+        return;
+    }
     struct node *curr_node = head, *prev_node;
     if(curr_node->next==NULL){
         head = NULL;

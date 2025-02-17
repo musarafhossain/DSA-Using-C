@@ -24,11 +24,25 @@ void Display(){
     }
 }
 
-void BinarySearch(int value, int size){
-
+void BinarySearch(int value){
+    int l=0, r=ARRAY_SIZE-1;
+    while (l <= r) { 
+        int mid = l + (r - l) / 2; 
+        if(value == arr[mid]){
+            printf("\nElement is present at index %d in array.", mid);
+            return;
+        }else if( value<arr[mid] ){
+            r = mid-1;
+        }else{
+            l = mid+1;
+        }
+    }
+    printf("\nElement is not present in the array.");
 }
 
 int main(){
     BubbleSort();
+    Display();
+    BinarySearch(4);
     return 0;
 }

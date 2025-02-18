@@ -11,7 +11,7 @@ void Swap(int *a, int *b){
 
 void BubbleSort(){
     for(int i = 0; i<ARRAY_SIZE-1; i++){
-        for(int j=0;j<ARRAY_SIZE-1;j++){
+        for(int j=0;j<ARRAY_SIZE-1-i;j++){
             if(arr[j]>arr[j+1])
                 Swap(&arr[j], &arr[j+1]);
         }

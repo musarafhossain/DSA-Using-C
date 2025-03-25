@@ -58,6 +58,14 @@ void display(){
     }
 }
 
+void peek(){
+    if(isEmpty()){
+        printf("\nQueue is Empty!");
+    } else{
+        printf("\nTop Item : %d", front->data);
+    }
+}
+
 int main(){
     enqueue(0);
     enqueue(1);
@@ -65,6 +73,7 @@ int main(){
     enqueue(3);
     enqueue(4);
     dequeue();
+    peek();
     dequeue();
     dequeue();
     dequeue();
